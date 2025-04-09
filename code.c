@@ -1,15 +1,19 @@
-Servo myservo;
+/* created by Annwyn M. 08/04/2025
+  make a servo spin in sync with a potentiometer */ 
 
-int potpin = 0; 
-int val; 
+#include <Servo.h>
 
-void setup() ( 
-  myservo.attach(9); 
-)
+Servo servoNumber1;
 
-void loop() ( 
- val = analogRead(potpin) 
- val = analogWrite (val, 0, 1023, 0, 180); 
- myservo.write(val); 
- delay(15); 
-) 
+const int ANALOG_PIN = 0; 
+float angleOfServo; 
+
+void setup() {
+    servoNumber1.attach(9); 
+}
+
+void loop() {
+    angleOfServo = analogRead(ANALOG_PIN);
+    angleOfServo = angleOfServo / 6; 
+    servoNumber1.write(angleOfServo); 
+}
